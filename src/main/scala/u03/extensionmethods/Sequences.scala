@@ -41,11 +41,11 @@ object Sequences:
                 case Cons(h, t) => (h == elem) || t.contains(elem)
                 case _ => false
             
+            // This function works, but it returns the elements in a different order from the og
             def distinct(): Sequence[A] = l match
                 case Cons(h, t) if !t.contains(h) => Cons(h, t.distinct())
                 case Cons(_, t) => t.distinct()
                 case _ => Nil()
-        
         
         def of[A](n: Int, a: A): Sequence[A] =
             if (n == 0) then Nil[A]() else Cons(a, of(n - 1, a))
