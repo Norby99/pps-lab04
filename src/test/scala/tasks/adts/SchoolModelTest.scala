@@ -52,3 +52,7 @@ class SchoolModelTest:
         assertFalse(emptySchool.hasTeacher("John"))
         assertTrue(emptySchool.setTeacherToCourse(john, course("Math")).hasTeacher("John"))
         assertTrue(emptySchool.setTeacherToCourse(albert, math).setTeacherToCourse(john, math).hasTeacher("John"))
+        
+    @Test def testHasCourse() =
+        assertFalse(emptySchool.hasCourse("Math"))
+        assertTrue(emptySchool.setTeacherToCourse(john, math).hasCourse("Math"))
