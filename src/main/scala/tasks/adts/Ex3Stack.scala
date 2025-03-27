@@ -12,19 +12,20 @@ import u03.Optionals.*
  *  -- a pair of top of the stack and the new stack after removal if not empty
  */
 object Ex3Stacks:
-
-  trait StackADT:
-    type Stack[A]
-    def empty[A]: Stack[A] // factory
-    extension [A](stack: Stack[A])
-      def push(a: A): Stack[A]
-      def pop(): Optional[(A, Stack[A])]
-      def asSequence(): Sequence[A]
-
-  object StackImpl extends StackADT:
-    type Stack[A] = Nothing
-    def empty[A]: Stack[A] = ???
-    extension [A](stack: Stack[A])
-      def push(a: A): Stack[A] = ???
-      def pop(): Optional[(A, Stack[A])] = ???
-      def asSequence(): Sequence[A] = ???
+    
+    trait StackADT:
+        type Stack[A]
+        def empty[A]: Stack[A] // factory
+        extension [A](stack: Stack[A])
+            def push(a: A): Stack[A]
+            def pop(): Optional[(A, Stack[A])]
+            def asSequence(): Sequence[A]
+    
+    object StackImpl extends StackADT:
+        type Stack[A] = Nothing
+        def empty[A]: Stack[A] = ???
+        extension [A](stack: Stack[A])
+            def push(a: A): Stack[A] = ???
+            def pop(): Optional[(A, Stack[A])] = ???
+            def asSequence(): Sequence[A] = ???
+            
