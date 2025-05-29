@@ -18,7 +18,7 @@ object Streams extends App :
       Cons(() => head, () => tail)
 
     def toList[A](stream: Stream[A]): Sequence[A] = stream match
-      case Cons(h, t) => Sequence.Cons(h(), toList(t()))
+      case Cons(h, t) => Sequence.::(h(), toList(t()))
       case _ => Sequence.Nil()
 
     def map[A, B](stream: Stream[A])(f: A => B): Stream[B] = stream match

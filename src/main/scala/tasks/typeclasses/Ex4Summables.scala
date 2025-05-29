@@ -11,7 +11,7 @@ import Sequence.*
 object Ex4Summables:
 
   def sumAllInt(seq: Sequence[Int]): Int = seq match
-    case Cons(h, t) => h + sumAllInt(t)
+    case h :: t => h + sumAllInt(t)
     case _ => 0
 
   trait Summable[A]:
@@ -21,7 +21,7 @@ object Ex4Summables:
   def sumAll[A: Summable](seq: Sequence[A]): A =
     val summable = summon[Summable[A]]
     seq match
-      case Cons(h, t) => summable.sum(h, sumAll(t))
+      case h :: t => summable.sum(h, sumAll(t))
       case _ => summable.zero
   
   given Summable[Int] with
@@ -39,17 +39,17 @@ object Ex4Summables:
   // write givens for Summable[Double] and Summable[String]
 
   @main def trySummables =
-    val si = Cons(10, Cons(20, Cons(30, Nil())))  
+    val si = 10 :: 20 :: 30 :: Nil()
     println:
       sumAllInt(si) // 60
     
     println:
       sumAll(si) // 60
       
-    val sd = Cons(10.0, Cons(20.0, Cons(30.0, Nil())))  
+    val sd: Sequence[Double] = 10.0 :: 20.0 :: 30.0 :: Nil()
     println:
       sumAll(sd) // 60.0
 
-    val ss = Cons("10", Cons("20", Cons("30", Nil())))  
+    val ss = "10" :: "20" :: "30" :: Nil()
     println:
       sumAll(ss) // "102030"

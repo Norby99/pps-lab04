@@ -20,7 +20,7 @@ object Ex5Traversable:
   def log[A](a: A): Unit = println("The next element is: "+a)
 
   def logAll[A](seq: Sequence[A]): Unit = seq match
-    case Cons(h, t) => log(h); logAll(t)
+    case h :: t => log(h); logAll(t)
     case _ => ()
 
   

@@ -23,7 +23,7 @@ object ExtensionMethods extends App:
   import Sequence.* 
 
   // cannot chain calls!
-  val seq = Cons(10, Cons(20, Cons(30, Nil())))
+  val seq = 10 :: 20 :: 30 :: Nil()
   println:
     Sequence.sum(map(filter(seq)(_ > 10))(_ + 1))
   
@@ -31,12 +31,12 @@ object ExtensionMethods extends App:
   extension [A](s: Sequence[A]) 
 
     def size: Int = s match
-      case Cons(_, t) => 1 + t.size
+      case _ :: t => 1 + t.size
       case _ => 0
 
     def filt(p: A => Boolean): Sequence[A] = s match
-      case Cons(h, t) if p(h) => Cons(h, t.filt(p))
-      case Cons(_, t) => t.filt(p)
+      case h :: t if p(h) => ::(h, t.filt(p))
+      case _ :: t => t.filt(p)
       case _ => Nil()
 
   // can chain method calls now!
